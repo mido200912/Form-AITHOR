@@ -1,0 +1,45 @@
+# ── Dependencies ──
+node_modules/
+.pnp
+.pnp.js
+
+# ── Environment Variables ──
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# ── Build Output ──
+dist/
+build/
+.vite/
+
+# ── Logs ──
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ── OS Files ──
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Editor ──
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ── Uploads (user CVs) ──
+server/uploads/
+
+# ── Misc ──
+*.local
+.cache/
