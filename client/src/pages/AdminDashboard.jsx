@@ -19,6 +19,7 @@ const DEPT_LABELS = {
   'marketing':      { label: 'Marketing',       Icon: TrendingUp },
   'pr':             { label: 'PR',              Icon: Megaphone },
   'ai':             { label: 'AI',              Icon: Brain },
+  'hr':             { label: 'HR',              Icon: Users },
 };
 
 const STATUS_CFG = {

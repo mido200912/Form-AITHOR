@@ -12,7 +12,7 @@ const applicationSchema = new mongoose.Schema({
   department: {
     type: String,
     required: true,
-    enum: ['graphic-design', 'video-editing', 'backend', 'marketing', 'pr', 'ai']
+    enum: ['graphic-design', 'video-editing', 'backend', 'marketing', 'pr', 'ai', 'hr']
   },
   skills:         { type: [String], default: [] },   // e.g. ["Photoshop", "Figma"]
 

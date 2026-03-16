@@ -5,7 +5,7 @@ import {
   Palette, Video, Code2, TrendingUp, Megaphone, Brain,
   CheckCircle2, AlertCircle, ArrowRight, Loader2,
   Link2, User, CalendarDays, Mail, Phone, MessageCircle,
-  Plus, X, FileText, Sparkles, NotebookPen, MessageSquarePlus
+  Plus, X, FileText, Sparkles, NotebookPen, MessageSquarePlus, Users
 } from 'lucide-react';
 
 const DEPARTMENTS = [
@@ -15,6 +15,7 @@ const DEPARTMENTS = [
   { id: 'marketing',      label: 'Marketing',      Icon: TrendingUp },
   { id: 'pr',             label: 'PR',             Icon: Megaphone },
   { id: 'ai',             label: 'AI',             Icon: Brain },
+  { id: 'hr',             label: 'HR',             Icon: Users },
 ];
 
 const API = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
