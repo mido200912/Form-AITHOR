@@ -9,20 +9,37 @@ const app = express();
 
 // ── CORS ──
 const allowedOrigins = [
-  'http://localhost:5173',
-  'http://localhost:3000',
-  process.env.CLIENT_URL        // e.g. https://aithor-form.vercel.app
-].filter(Boolean);
+  /^https?:\/\/localhost(:\d+)?$/,           // localhost any port
+  /^https:\/\/.*\.vercel\.app$/,             // any vercel.app subdomain
+  /^https:\/\/.*\.aithor\.com$/,             // production domain (future)
+];
+
+// Also allow explicit origins from env
+if (process.env.CLIENT_URL) {
+  allowedOrigins.push(process.env.CLIENT_URL);
+}
 
 app.use(cors({
   origin: (origin, callback) => {
-    // Allow requests with no origin (mobile apps, Postman, etc.)
+    // Allow requests with no origin (mobile, Postman, server-to-server)
     if (!origin) return callback(null, true);
-    if (allowedOrigins.includes(origin)) return callback(null, true);
+    const allowed = allowedOrigins.some(pattern =>
+      typeof pattern === 'string'
+        ? pattern === origin
+        : pattern.test(origin)
+    );
+    if (allowed) return callback(null, true);
+    console.warn('CORS blocked:', origin);
     callback(new Error('Not allowed by CORS'));
   },
-  credentials: true
+  credentials: true,
+  methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 }));
+
+// Handle preflight for all routes
+app.options('*', cors());
+
 
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
